@@ -2,6 +2,7 @@ var express = require("express");
 var mysql = require("mysql")
 var exphbs = require("express-handlebars");
 
+
 var app = express();
 
 // Set the port of our application
@@ -16,7 +17,7 @@ const connection = mysql.createConnection({
     user: "root",
     password: "Gladiator5972!",
     port: 3306,
-    database: ""
+    database: "burgers_db"
 });
 
 connection.connect(err => {
@@ -28,3 +29,5 @@ connection.connect(err => {
 app.listen(PORT, function(){
     console.log(`Listening on port: ${PORT}`)
 })
+
+module.exports= connection
