@@ -5,28 +5,26 @@ const router = express.Router()
 // CREATE THE "ROUTER" FOR THE APP
 router.get("/", (req, res)=>{
     burger.all(function(data){
-        const burgerObject = { burger: data }
-        res.render("index", burgerObject)
+        console.log(data)
+        res.render("index", { burgers: data })
     });
 });
 
 router.post("/api/burgers", (req, res)=>{
-    burger.create("burger_name", req.body.name, result=>{
+    burger.create("burger_name", req.body, result=>{
         res.json({ id: result.insertId })
     })
 });
 
 router.delete("/api/burgers/:id", (req, res)=>{
-    const condition = `id = ${req.params.id}`re
+    const condition = `id = ${req.params.id}`
 
     burger.delete(condition, result=>{
         if(result.affectedRows === 0){
             return res.status(404).end()
         }
         res.status(200).end()
-    })
-})
-
-
+    });
+});
 
 module.exports = router

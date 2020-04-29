@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/tsbolty/Eat-Da-Burger#readme",
   "dependencies": {
-    "express-handlebars": "^4.0.3"
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.3",
+    "mysql": "^2.18.1"
   }
 }

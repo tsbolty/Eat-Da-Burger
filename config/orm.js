@@ -28,22 +28,22 @@ for (var key in ob) {
 const orm = {
     selectAll: function(tableName, cb){
         const queryString = `SELECT * FROM ${tableName}`;
-        connection.query(queryString, [], (err, data)=>{
+        connection.query(queryString, (err, data)=>{
             if(err) throw err;
+            cb(data)
         })
-        cb(data)
     },
 
     create: function(tableName, cols, vals, cb){
         const queryString = "INSERT INTO ?? (??) VALUES (?)";
-        connection.query(queryString, [tableName, cols.toString(), vals], (err, data)=>{
+        connection.query(queryString, [tableName, cols.toString(), objToSql(vals)], (err, data)=>{
             if(err) throw err;
             cb(data)
         })
     },
 
     update: function(tableName, objColVals, condition, cb){
-        const queryString = `SET ${objToSql(objColVals)} WHERE ${condition}`;
+        const queryString = `UPDATE ${tableName} SET ${objToSql(objColVals)} WHERE ${condition}`;
         connection.query(queryString, (err, data)=>{
             if(err) throw err;
             cb(data)
