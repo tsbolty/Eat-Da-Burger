@@ -25,4 +25,4 @@ var burger = {
 
 
 
-//module.exports = these functions
+module.exports = burger
