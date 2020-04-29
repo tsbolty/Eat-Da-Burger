@@ -2,11 +2,8 @@ var express = require("express");
 var mysql = require("mysql")
 var exphbs = require("express-handlebars");
 
-
 var app = express();
 
-// Set the port of our application
-// process.env.PORT lets the port be set by Heroku
 var PORT = process.env.PORT || 8080;
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -24,7 +21,6 @@ connection.connect(err => {
     if (err) throw err
     console.log(`Connected to MySQL as id ${connection.threadId}`)
 })
-
 
 app.listen(PORT, function(){
     console.log(`Listening on port: ${PORT}`)
