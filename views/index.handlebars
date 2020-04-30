@@ -1,11 +1,10 @@
 <h1>Burgers</h1>
 
-<ul>
+<ul class= "list">
     {{#each burgers}}
-    <li>
-        <p>{{this.burger_name}}</p>
-        <button id= {{this.id}}>Devour</button>
-    </li>
+        {{#unless devoured}}
+            {{> burgers/burger-block devoured=true}}
+        {{/unless}}
     {{/each}}
 </ul>
 
@@ -15,10 +14,10 @@
 	<button type="submit" id="submit">Submit</button>
 </form>
 
-{{!-- <ul id= "right-side-list">
+<ul id= "right-side-list">
     {{#each burgers}}
         {{#if devoured}}
-            {{> burgers/burger-block devoured=false}}
+            {{> burgers/burger-block}}
         {{/if}}
     {{/each}}
-</ul> --}}
+</ul>

@@ -51,7 +51,7 @@ const orm = {
     },
 
     delete: function(table, condition, cb){
-        const queryString = `DELETE FROM ${table} WHERE ${condition}`
+        const queryString = `DELETE FROM ${table} WHERE ${condition.toString()}`
         connection.query(queryString, (err, result)=>{
             if (err) throw err
             cb(result)
