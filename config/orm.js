@@ -42,8 +42,8 @@ const orm = {
         })
     },
 
-    update: function(tableName, objColVals, condition, cb){
-        const queryString = `UPDATE ${tableName} SET ${objToSql(objColVals)} WHERE ${condition}`;
+    update: function(tableName, vals, condition, cb){
+        const queryString = `UPDATE ${tableName} SET ${objToSql(vals)} WHERE ${condition}`;
         connection.query(queryString, (err, data)=>{
             if(err) throw err;
             cb(data)
