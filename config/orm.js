@@ -35,8 +35,8 @@ const orm = {
     },
 
     create: function(tableName, cols, vals, cb){
-        const queryString = "INSERT INTO ?? (??) VALUES (?)";
-        connection.query(queryString, [tableName, cols.toString(), objToSql(vals)], (err, data)=>{
+        const queryString = `INSERT INTO ${tableName} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`;
+        connection.query(queryString, vals, (err, data)=>{
             if(err) throw err;
             cb(data)
         })
