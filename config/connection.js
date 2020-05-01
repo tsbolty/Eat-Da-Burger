@@ -27,8 +27,4 @@ connection.connect(err => {
     console.log(`Connected to MySQL as id ${connection.threadId}`)
 })
 
-app.listen(PORT, function(){
-    console.log(`Listening on port: ${PORT}`)
-})
-
 module.exports= connection
